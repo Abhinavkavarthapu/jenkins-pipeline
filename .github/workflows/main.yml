@@ -34,7 +34,7 @@ jobs:
       env:
         NGROK_AUTH_TOKEN: ${{ secrets.ngrok }}
       run: |
-        ngrok authtoken $ngrok
+        ngrok authtoken $NGROK_AUTH_TOKEN
         ngrok http 5000 > ngrok.log &
         sleep 5
         curl --silent http://127.0.0.1:4040/api/tunnels | jq -r '.tunnels[0].public_url'
